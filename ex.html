@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FindMySlot - Smart Parking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #e0f7fa, #fff3e0);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #42a5f5, #478ed1);
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: #fff;
+      padding: 1rem;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    nav button {
+      padding: 10px 20px;
+      background: linear-gradient(to right, #66bb6a, #43a047);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #43a047, #2e7d32);
+    }
+    section {
+      padding: 2rem;
+      display: none;
+      max-width: 600px;
+      margin: auto;
+    }
+    .active {
+      display: block;
+    }
+    .slot {
+      background: linear-gradient(to right, #fff, #f1f8e9);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .slot strong {
+      font-size: 1.2em;
+      color: #1b5e20;
+    }
+    .confirm {
+      background: linear-gradient(to right, #ff7043, #f4511e);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .confirm:hover {
+      background: linear-gradient(to right, #e64a19, #bf360c);
+    }
+    select, input[type="text"] {
+      padding: 8px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    h2 {
+      color: #00695c;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🚗 FindMySlot</h1>
+    <p>Smart Parking System for Urban India</p>
+  </header>
+
+  <nav>
+    <button onclick="show('home')">🏠 Home</button>
+    <button onclick="show('map')">🗺️ Map</button>
+    <button onclick="show('book')">📅 Booking</button>
+    <button onclick="show('payment')">💳 Payment</button>
+  </nav>
+
+  <section id="home" class="active">
+    <h2>Welcome, Driver!</h2>
+    <p>Find, Book, and Park effortlessly with FindMySlot.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" alt="parking" width="100"/>
+  </section>
+
+  <section id="map">
+    <h2>Nearby Parking Zones</h2>
+    <div class="slot">
+      <strong>📍 Guntur Mall Parking</strong><br>
+      Status: <span style="color:green; font-weight: bold;">Available</span><br>
+      Price: ₹30/hour<br>
+      <button class="confirm" onclick="show('book')">Book Now</button>
+    </div>
+    <div class="slot">
+      <strong>📍 Railway Station Lot</strong><br>
+      Status: <span style="color:red; font-weight: bold;">Full</span><br>
+      Price: ₹20/hour
+    </div>
+  </section>
+
+  <section id="book">
+    <h2>Booking Slot</h2>
+    <p><strong>Selected Location:</strong> Guntur Mall Parking</p>
+    <label>Choose Duration:
+      <select>
+        <option>30 mins</option>
+        <option>1 hour</option>
+        <option>2 hours</option>
+      </select>
+    </label><br>
+    <button class="confirm" onclick="show('payment')">Proceed to Payment</button>
+  </section>
+
+  <section id="payment">
+    <h2>Payment Gateway</h2>
+    <p><strong>Total:</strong> ₹30</p>
+    <label>Enter UPI ID:
+      <input type="text" placeholder="yourname@upi">
+    </label><br>
+    <button class="confirm" onclick="show('confirm')">Pay & Confirm</button>
+  </section>
+
+  <section id="confirm">
+    <h2>✅ Booking Confirmed</h2>
+    <p>Your parking slot is booked!</p>
+    <p><strong>Slot ID:</strong> #FM2025-GUNTUR</p>
+    <button class="confirm" onclick="show('home')">Go to Home</button>
+  </section>
+
+  <script>
+    function show(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
